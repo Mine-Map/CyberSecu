@@ -1,0 +1,2 @@
+Malware teste sur debian et window
+Le fichier zip se dezip et fait crash debian et sur window ouvre un terminal 1s avec un message afficher.
