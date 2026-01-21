@@ -1,0 +1,15 @@
+J’ai réalisé une analyse statique du malware en travaillant sur le fichier Env.exe extrait de l’archive ZIP, 
+sans jamais l’exécuter afin d’éviter tout risque.
+
+Le fichier est un exécutable Windows de type PE32, développé en C++ avec le framework Qt. 
+L’étude de ses dépendances met en évidence l’utilisation de bibliothèques classiques telles que 
+Qt5Core, Qt5Network, KERNEL32, SHELL32, msvcrt et libstdc++. Cela correspond à une application graphique standard, 
+avec des capacités réseau possibles, mais qui ne peuvent pas être confirmées à ce stade.
+
+L’extraction et l’analyse des chaînes de caractères n’ont révélé aucun élément suspect : 
+aucune URL, adresse IP, chemin système sensible (AppData, Run) ou commande système comme cmd ou PowerShell. 
+La structure interne du binaire (.text, .data, .rdata, .idata, etc.) est conforme à un exécutable Windows classique, 
+sans signe de compression, de chiffrement ou d’obfuscation.
+
+Les empreintes cryptographiques du fichier (MD5 et SHA-256) ont été relevées afin de permettre son identification. 
+Aucun mécanisme de persistance, d’injection de code ou d’anti-analyse n’a été identifié lors de cette analyse statique.
