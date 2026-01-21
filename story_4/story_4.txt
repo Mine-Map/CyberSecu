@@ -1,0 +1,7 @@
+Le malware a créé un dossier camouflé `C:\WindSyst\` contenant 11 fichiers suspects : deux exécutables (Env.exe, Res.exe), quatre DLL Qt5 (Core, Gui, Network, Widgets), trois dépendances C++ (libgcc, libstdc++, libwinpthread), un dossier plugins vide, et un fichier log.txt (396 bytes).
+
+Communication TCP établie vers l'IP distante 23.58.193.189:443 (HTTPS/TLS) confirmant un serveur C&C. Échange de données réussi suivi d'un TCP Reset/ACK, indiquant une fermeture intentionnelle après transmission de commandes.
+
+Exécution séquentielle de Res.exe et Env.exe depuis l'archive ZIP. Le fichier log.txt contient un keylogger enregistrant les frappe utilisateur en temps réel : tentatives cmd.exe, PowerShell, énumérations système.
+
+Le malware fonctionne en tant que RAT (Remote Access Trojan) Qt-based capable de surveillance utilisateur, exécution de commandes distantes, et communication bidirectionnelle avec son infrastructure de contrôle.
