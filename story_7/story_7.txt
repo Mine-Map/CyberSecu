@@ -1,0 +1,9 @@
+L'image disque bit-à-bit a été acquise avec via FTK Imager en format Encase, capturant l'intégralité du disque dur de la machine . L'analyse forensique complète du dump révèle une compromission de la machine.
+
+Infrastructure de persistance détectée : dossier camouflé `C:\WindSyst\` contenant deux exécutables (Env.exe, Res.exe), quatre DLL Qt5 (Core, Gui, Network, Widgets), trois dépendances C++ (libgcc_s_dw2-1.dll, libstdc++-6.dll, libwinpthread-1.dll), et un fichier log.txt (396 bytes). Tous les fichiers portent la marque Internet Zone, indiquant leur extraction depuis l'archive ZIP téléchargée.
+
+Artefact supprimé retrouvé : archive `$RV90DKX.zip` localisée dans le Recycle Bin (/$Recycle.Bin/S-1-5-21-2765607508-1319824896-2007106155-1001/), provenant de la même URL de téléchargement. Tentative de suppression de preuves documentée.
+
+Extraction complète de la structure malveillante depuis l'archive : dossier `/Malware-main/Malware-main/Malware/VIRUS/` contenant les mêmes dépendances C++ et bibliothèques Qt5, confirmant le chaînage d'exécution du malware (déballage de l'archive suivi de l'exécution de Res.exe et Env.exe).
+
+Analyse de l'artefact réseau : communication TCP établie vers 23.58.193.189:443 (HTTPS/TLS) indiquant contact avec serveur C&C, suivi d'un TCP Reset/ACK attestant fermeture intentionnelle après transmission de commandes. Log.txt contient les traces d'un keylogger enregistrant les frappes utilisateur (cmd.exe, PowerShell, énumérations système).
