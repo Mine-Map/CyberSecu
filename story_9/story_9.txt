@@ -1,0 +1,3 @@
+L’analyse de la clé de registre USBSTOR dans le hive SYSTEM a permis d’identifier une clé USB SanDisk Cruzer Blade précédemment connectée au système.
+Le numéro de série unique (USB Serial/UID) du périphérique est : 4C530000281008116284&0.
+Cet identifiant peut être utilisé pour relier le périphérique à un utilisateur ou à un événement de fuite de données.
