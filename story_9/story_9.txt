@@ -1,3 +1,33 @@
-L’analyse de la clé de registre USBSTOR dans le hive SYSTEM a permis d’identifier une clé USB SanDisk Cruzer Blade précédemment connectée au système.
+L’analyse de la clé de registre USBSTOR dans le hive SYSTEM a permis d’identifier une clé USB 
+
+SanDisk Cruzer Blade précédemment connectée au système.
+
 Le numéro de série unique (USB Serial/UID) du périphérique est : 4C530000281008116284&0.
 Cet identifiant peut être utilisé pour relier le périphérique à un utilisateur ou à un événement de fuite de données.
+
+Récupération des données:
+git clone https://github.com/Waelmeg/Dump_memoire.git
+cd Dump_memoire
+
+Extraction de l’archive mémoire :
+unzip dump.zip
+cd dump
+
+Vérification :
+ls -lh
+
+Analyse du registre avec hivexsh :
+hivexsh SYSTEM
+
+Navigation vers les périphériques USB :
+cd ControlSet001
+cd Enum
+cd USBSTOR
+ls
+
+Accès au périphérique USB identifié :
+cd Disk&Ven_SanDisk&Prod_Cruzer_Blade&Rev_1.00
+ls
+
+Extraction du numéro de série (UID) :
+cd 4C530000281008116284&0
