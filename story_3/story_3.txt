@@ -13,3 +13,116 @@ sans signe de compression, de chiffrement ou d’obfuscation.
 
 Les empreintes cryptographiques du fichier (MD5 et SHA-256) ont été relevées afin de permettre son identification. 
 Aucun mécanisme de persistance, d’injection de code ou d’anti-analyse n’a été identifié lors de cette analyse statique.
+
+Commande : 
+cd ~/malware/US3/Malware
+ls
+    Malware.zip VIRUS
+
+cd VIRUS
+ls
+    Env.exe
+    Res.exe
+    Qt5Core.dll
+    Qt5Gui.dll
+    Qt5Network.dll
+    Qt5Widgets.dll
+    libgcc_s_dw2-1.dll
+    libstdc++-6.dll
+    libwinpthread-1.dll
+
+ls -lh
+    -rw-rw-r-- 1 mat mat  52K 13 août 2022 Env.exe
+    -rw-rw-r-- 1 mat mat  116K 23 janv. 10:38 hashes.txt
+    -rw-rw-r-- 1 mat mat 118K 13 août 2022 libgcc_s_dw2-1.dll
+    -rw-rw-r-- 1 mat mat 1.5M 13 août 2022 libstdc++-6.dll
+    -rw-rw-r-- 1 mat mat  78K 13 août 2022 libwinpthread-1.dll
+    -rw-rw-r-- 1 mat mat 5.9M 13 août 2022 Qt5Core.dll
+    -rw-rw-r-- 1 mat mat 6.0M 13 août 2022 Qt5Gui.dll
+    -rw-rw-r-- 1 mat mat 1.8M 13 août 2022 Qt5Network.dll
+    -rw-rw-r-- 1 mat mat 6.1M 13 août 2022 Qt5Widgets.dll
+    -rw-rw-r-- 1 mat mat  25K 22 août 2022 Res.exe
+    -rw-rw-r-- 1 mat mat  12K 23 janv. 10:38 strings.txt
+
+
+file *
+    Env.exe: PE32 executable for MS Windows 4.00 (GUI), Intel i386 (stripped to external PDB), 8 sections
+    hashes.txt: ASCII text
+    libgcc_s_dw2-1.dll: PE32 executable for MS Windows 4.00 (DLL), Intel i386 (stri pped to external PDB), 10 sections
+    libstdc++-6.dll: PE32 executable for MS Windows 4.00 (DLL), Intel i386 (stripped to external PDB), 10 sections
+    libwinpthread-1.dll: PE32 executable for MS Windows 4.00 (DLL), Intel i386 (stripped to external PDB), 10 sections
+    Qt5Core.dll: PE32 executable for MS Windows 4.00 (DLL), Intel i386 (stripped to external PDB), 11 sections
+    Qt5Gui.dll: PE32 executable for MS Windows 4.00 (DLL), Intel i386 (stripped to external PDB), 11 sections
+    Qt5Network.dll: PE32 executable for MS Windows 4.00 (DLL), Intel i386 (stripped to external PDB), 11 sections
+    Qt5Widgets.dll: PE32 executable for MS Windows 4.00 (DLL), Intel i386 (stripped to external PDB), 11 sections
+    Res.exe: PE32 executable for MS Windows 4.00 (console), Intel i386 (stripped to external PDB), 8 sections
+    strings.txt: assembler source, ASCII text
+
+
+file Env.exe
+    Env.exe: PE32 executable for MS Windows 4.00 (GUI), Intel i386 (stripped to external PDB), 8 sections
+
+
+ls -lh Env.exe
+    -rw-rw-r-- 1 mat mat 52K 13 août 2022 Env.exe
+
+md5sum Env.exe > hashes.txt
+sha256sum Env.exe >> hashes.txt
+cat hashes.txt
+    abbc02a7e5ff7b884700eac7087cf743  Env.exe
+e09ec2098363a129de143fdaf73ad6e2e61266fba3f638a25214af3a8bc8f2f2  Env.exe
+
+
+strings Env.exe > strings.txt
+grep -i -E "http|https|ftp|AppData|Users|Run|cmd|powershell" strings.txt
+    !This program cannot be run in DOS mode.
+    Mingw-w64 runtime failure:
+    _ZN7QString8truncateEi
+    -acmdln
+
+
+objdump -p Env.exe | grep DLL
+    vma:   Hint   Temps   Avant   DLL   Premier
+    DLL Name: Qt5Core.dll
+    DLL Name: Qt5Network.dll
+    DLL Name: libgcc_s_dw2-1.dll
+    DLL Name: KERNEL32.dll
+    DLL Name: msvcrt.dll
+    DLL Name: SHELL32.dll
+    DLL Name: libstdc++-6.dll
+
+
+objdump -h Env.exe
+Sections:
+    Idx Name      Size      VMA       LMA       File off  Algn
+     0 .text     00006dd8  00401000  00401000  00000400  2**4
+                 CONTENTS, ALLOC, LOAD, READONLY, CODE, DATA
+     1 .data     00000070  00408000  00408000  00007200  2**2
+                 CONTENTS, ALLOC, LOAD, DATA
+     2 .rdata    000017f4  00409000  00409000  00007400  2**5
+                 CONTENTS, ALLOC, LOAD, READONLY, DATA
+     3 .eh_fram  000010ac  0040b000  0040b000  00008c00  2**2
+                 CONTENTS, ALLOC, LOAD, READONLY, DATA
+     4 .bss      00000444  0040d000  0040d000  00000000  2**6
+                 ALLOC
+     5 .idata    00002c20  0040e000  0040e000  00009e00  2**2
+                 CONTENTS, ALLOC, LOAD, DATA
+     6 .CRT      00000034  00411000  00411000  0000cc00  2**2
+                 CONTENTS, ALLOC, LOAD, DATA
+     7 .tls      00000020  00412000  00412000  0000cd00  2**2
+                 CONTENTS, ALLOC, LOAD, DATA
+
+
+ls
+    Env.exe
+    Res.exe
+    Qt5Core.dll
+    Qt5Gui.dll
+    Qt5Network.dll
+    Qt5Widgets.dll
+    libgcc_s_dw2-1.dll
+    libstdc++-6.dll
+    libwinpthread-1.dll
+    hashes.txt
+    strings.txt
+
