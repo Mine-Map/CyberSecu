@@ -1,0 +1,11 @@
+L’analyse du hive SYSTEM a permis d’identifier un périphérique de stockage USB dont l’identifiant matériel unique (UID) est associé aux propriétés temporelles suivantes :
+
+Première insertion du périphérique (First Install Date – valeur 0064) : 03 février 2020 à 12:12:32
+Dernière connexion du périphérique (Last Arrival Date – valeur 0065) : 03 février 2020 à 12:12:32
+Dernière éjection du périphérique (Last Removal Date – valeur 0066) : 03 février 2020 à 12:44:21
+Dernière mise à jour de l’installation du périphérique (Last Install Date / Update – valeur 0067) : 03 février 2020 à 12:45:00
+
+La concordance entre la date de première insertion et celle de dernière connexion indique que ce périphérique USB n’a été connecté qu’une seule fois au système analysé.
+La période d’utilisation du périphérique s’étend donc du 03/02/2020 à 12:12:32 jusqu’à son retrait à 12:44:21, soit une durée d’environ 32 minutes.
+
+Toute action réalisée à l’aide de ce périphérique USB, y compris l’introduction de fichiers ou de programmes malveillants, a nécessairement eu lieu durant cette période.
