@@ -2,7 +2,7 @@
 
 
 
-Étape 1 : 
+Étape 1 :
 
 
 
@@ -38,7 +38,7 @@ Une fois les fichiers copiés, Res.exe est exécuté. Côté mémoire (RAM), Res
 
 
 
-Le terminal récupère nos saisies au clavier, le fichier log.txt conserve nos saisies et se met à jour à chaque fois que la touche "entrée" est saisie. Les données sont stockées sur le disque et non dans la RAM.
+Le terminal récupère nos saisies au clavier, le fichier log.txt conserve nos saisies et se met à jour à chaque fois qu'une touche est pressée. Les données sont stockées sur le disque et non dans la RAM.
 
 
 
