@@ -1,7 +1,1 @@
-Le malware a créé un dossier camouflé `C:\WindSyst\` contenant 11 fichiers suspects : deux exécutables (Env.exe, Res.exe), quatre DLL Qt5 (Core, Gui, Network, Widgets), trois dépendances C++ (libgcc, libstdc++, libwinpthread), un dossier plugins vide, et un fichier log.txt (396 bytes).
-
-Communication TCP établie vers l'IP distante 23.58.193.189:443 (HTTPS/TLS) confirmant un serveur C&C. Échange de données réussi suivi d'un TCP Reset/ACK, indiquant une fermeture intentionnelle après transmission de commandes.
-
-Exécution séquentielle de Res.exe et Env.exe depuis l'archive ZIP. Le fichier log.txt contient un keylogger enregistrant les frappe utilisateur en temps réel : tentatives cmd.exe, PowerShell, énumérations système.
-
-Le malware fonctionne en tant que RAT (Remote Access Trojan) Qt-based capable de surveillance utilisateur, exécution de commandes distantes, et communication bidirectionnelle avec son infrastructure de contrôle.
+Un RAT qui reposent sur le framework Qt été installé et à crée un dossier C:\WindSyst\ qui ressemble au dossier System32 avec deux exécutables (Env.exe, Res.exe), des DLLs Qt5 et dépendances C++, ainsi qu'un keylogger dans log.txt enregistrant les frappes utilisateur. Grâce au logiciel Wireshark on peut identifier une connexion Command & Control vers 23.58.193.189:443 pour exécuter des commandes distantes et surveiller l'utilisateur en temps réel.
