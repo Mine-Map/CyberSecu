@@ -68,7 +68,7 @@ PS : Le dump n'est pas joint car il pèse trop lourd (> 4Go)
 
 
 
-   	Une fois l'exécutable exécuté, un fichier .dmp (contenant le nom du PC comme CYBERSECURITE-20260122-082535) sera créé. Ce fichier sera exploitable avec Volatility.
+   	Une fois l'exécutable exécuté, un fichier .dmp (contenant le nom du PC comme CYBERSECURITE-20260122-082535, CYBERSECURITE = nom du PC) sera créé. Ce fichier sera exploitable avec Volatility.
 
 
 
@@ -104,9 +104,9 @@ Ces analyses ont été effectuées avec le dump RAM récupéré avec DumpIt.
 
 
 
-&nbsp;	L'investigation des processus en cours à l'aide du plugin windows.pslist a aidé à détecter le processus Res.exe, qui est associé à l'un des exécutables que le logiciel malveillant a implantés sur la machine.
+ 	L'investigation des processus en cours à l'aide du plugin windows.pslist a aidé à détecter le processus Res.exe, qui est associé à l'un des exécutables que le logiciel malveillant a implantés sur la machine.
 
-Ce processus fonctionne dans un environnement utilisateur et est lié à des processus de console (conhost.exe, WindowsTerminal.exe), ce qui correspond au comportement constaté lors de l'exécution du trojan (fenêtre terminal qui enregistre les frappes clavier).
+Ce processus fonctionne dans un environnement utilisateur et est lié à des processus de console (conhost.exe, WindowsTerminal.exe), ce qui correspond au comportement constaté lors de l'exécution du trojan (fenêtre terminal qui enregistre les frappes clavier, keylogger).
 
 Aucune autre procédure suspecte, portant un nom atypique ou lancée depuis une localisation inhabituelle, n'a été détectée.
 
@@ -166,9 +166,9 @@ On n'a observé aucun processus caché, orphelin ou incohérent, ce qui indique 
 
 
 
- 	L'étude des liaisons réseau grâce au plugin windows.netscan, au moment de l'acquisition mémoire, n'a détecté aucune connexion réseau active.
+ 	L'analyse des liaisons réseau grâce au plugin windows.netscan, au moment de l'acquisition mémoire, n'a détecté aucune connexion réseau active.
 
-Bien que le logiciel malveillant intègre des bibliothèques réseau, notamment par l'intermédiaire du framework Qt, aucune communication continue ou tentative d'exfiltration n'a été détectée en mémoire lors de la sauvegarde.
+Bien que le logiciel malveillant intègre des bibliothèques réseau, notamment par l'intermédiaire du framework Qt (Qt5Network.dll), aucune communication continue ou tentative d'exfiltration n'a été détectée en mémoire lors de la sauvegarde.
 
 
 
@@ -176,9 +176,9 @@ Bien que le logiciel malveillant intègre des bibliothèques réseau, notamment 
 
 
 
-L'examen de la mémoire vive a révélé la présence d'un logiciel malveillant identifié comme étant le processus utilisateur Res.exe, en cours d'exécution au moment de la collecte et lié à une exécution en mode console, ce qui est compatible avec un comportement typique de keylogger.
+L'analyse de la mémoire vive a révélé la présence d'un logiciel malveillant identifié comme étant Res.exe, en cours d'exécution au moment de la collecte et lié à une exécution en mode console, ce qui est compatible avec un comportement typique de keylogger.
 
-Néanmoins, aucune preuve de tentative de dissimulation, de persistance en mémoire vive ou de communication réseau active n'a été trouvée.
+Il n'a été découvert aucune indication de tentative de dissimulation, de persistance ou de communication externe au sein de la RAM.
 
-Ces facteurs suggèrent que le logiciel malveillant est un trojan basique (cheval de Troie), qui ne fonctionne que lorsqu'il est en cours d'exécution et qui s'appuie essentiellement sur des artefacts stockés sur le disque dur. Cela souligne l'importance du moment choisi lors d'une acquisition mémoire forensic.
+Ces éléments indiquent que le malware est un simple Trojan (cheval de Troie), qui opère uniquement quand il est exécuté et repose principalement sur des objets sauvegardés sur le disque dur. Cela souligne l'importance du moment choisi lors d'une acquisition mémoire forensique.
 
